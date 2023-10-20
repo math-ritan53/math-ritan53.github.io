@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Lato:wght@900&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script src="./main.js"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <div id="progress"></div>
+    <div class="frame">
+        <div class="header">
+            <h1>1</h1>
+            <h2>What is<br>Zippered<br>Tube</h2>
+        </div>
+        <div class="content">
+            <h2>ジッパードチューブとは</h2>
+            <p>
+                ジッパードチューブ（Zippered Tube）とはミウラ折りの技術を用いた<a href="#image1" class="internalImage">(1)</a>図のような3次元展開構造である. ある斜四角柱とその斜四角柱を底面と平行に \(\pi\) 回転させた立体とを交互に連結させた構造とみなせる. ミウラ折りを<a href="#image2" class="internalImage">(2)</a>図のように分解し, 組み合わせることで作ることができる. <a href="#image3" class="internalImage">(3)</a><a href="#image4" class="internalImage">(4)</a><a href="#image5" class="internalImage">(5)</a>図のようにジッパードチューブは展開することで角柱に, 収縮することで平面に変形する. その為, 体積を大幅に減らした状態で持ち運びを行うことができる. また, 端部に力を加えるとチューブ全体を連動させることができ, 他のチューブと繋ぎ合わせた立体を自在に設計することもできる. この構造は可動式の屋根や折り畳める建築物, ロボットの駆動機構, 宇宙分野の展開構造物などの様々な分野への応用が考えられる\cite{a}.\\
+                　ミウラ折りとは1970年に東京大学名誉教授の三浦公亮が考案した<a href="#image6" class="internalImage">(6)</a>図のような折り方\cite{b}. その展開図は<a href="#image7" class="internalImage">(7)</a>図の通りである. きわめて緩い角度のジグザグな折り目をつけることで, 紙の対角線の部分を押したり引いたりするだけで素早く簡単に展開・収納が出来るようになっている. この緩い角度をここではミウラ折りの角度と呼称する. また, ミウラ折りの展開図における大きさの異なる二つの辺のうち短い方の辺をミウラ折りの辺と呼称する. 以降, 本稿ではミウラ折りの角度を\(a\), ミウラ折りの辺を1とする. 単に直角に折った構造や蛇腹状に折った構造はミウラ折りとは呼べない. 一方, ミウラ折りの角度\(a\)が\(}\)以下の時, 三角形を基調とした折り方になるので, これもミウラ折りとは呼べない. したがって, ミウラ折りの角度\(a\)の変域は\(}\)である. また, ミウラ折りの辺の長さが1である時, 二つの辺のうち長い方の辺の大きさは\(}\)である.\\
+                　3次元展開構造とはx,y,z軸の3つの軸のうち, 3軸方向に同時に展開できる構造物のことである. 同様に, 1軸方向に同時に展開できるものは1次元展開構造物, 2軸方向に同時に展開できるものは2次元展開構造物と称されている\cite{ソガメ}. 例えば蛇腹折りやヨシムラパターンは1次元展開構造物であり, ミウラ折りは2次元展開構造物に, ソガメ折りや筒状のナマコ折り\footnote{ナマコ折りを筒状に接続したもの. 理数探究\(}\)におけるレポート“折り紙ペットボトル”(2022)で提案した. その内容はナマコ折りの角度変化について探究し, 構造が筒状になるような条件を調べるというもの.}は3次元展開構造物に分類される. 今回研究したジッパードチューブは, 組み合わせることで収縮する方向が変化する2次元展開構造物や, 3次元構造物にすることができる.
+                \section{ジッパードチューブの座標設定}
+                構造体の伸縮をシミュレーションする為, 座標空間でジッパードチューブの模型を設定する.
+                <a href="#image8" class="internalImage">(8)</a>図のように, ある底面\footnote{理数探究\(}\)におけるレポート“ジッパードチューブで作る緑台高校”ではF\(0\)を一番下の底面と定義しているが, ここではより一般化して考える.}をF\(0\)とし, その直上の底面をF\(1\), 以降同様に整数\(n\)\footnote{同レポートでは\(n\)を自然数の範囲に限定しているが, ここでは上半空間に限らず議論したい.}に対しF\(0\)から順に\(1\)番目の底面をF\(n\)段目とする. さらに<a href="#image9" class="internalImage">(9)</a>図のように, F\(0\)の頂点を\(0\)とし, F\(1\)の頂点をO\(1\), A\(1\), B\(1\), C\(1\)とし, 以降同様にF\(n\)の点をO\(n\), A\(n\), B\(n\), C\(n\)とする.\\
+                　O\(0\)を原点とする座標空間において, F\(0\)が常にxy平面上にあるとする. また, \eqref{p10}\eqref{p11}図のように, \(}\)の大きさを\(a\)とする. ただし, \(a\)である\footnote{同レポートでは\(a\)としているが, これは後にとりうる値が変化する為である. 詳しくは“7　オリガミチューブへの発展”で述べる.}. 始点\(0\)から終点A\(0\), B\(0\)へ向かうベクトルを\(b\)とし, 点A\(0\), B\(0\)の位置ベクトル\(}\)とする時, 以下の式が成り立つ.
+                \[{2}
+                \bm{A_0} &=\bm{a}&= (\cos (+\alpha) , \sin (+\alpha) , 0)\\
+                \bm{B_0} &=\bm{b}&= (\cos (-\alpha) , \sin (-\alpha) , 0)
+                \]
+                　点C\(0\)の位置ベクトル\(}\)は\(}\)と\(}\)の和で表されるので, 以下のように表すことができる.
+                \[
+                \bm{C_0} &= \bm{a} + \bm{b}
+                \]
+                　\eqref{p12}図のように, 辺O\(0\)O\(1\)とx軸の為す角度を\(a\)とする. この時, \eqref{p13}図のように, \(}\)の大きさは\(}\)であるので, 点O\(1\)の位置ベクトル\(}\)は以下の通りである.
+                \begin{equation}
+                \bm{O_1}= \left(\frac {\cos \beta}{\sin \theta},0,\frac{\sin \beta}{\sin \theta}\right)
+                \end{equation}
+                　ここで\(}\)と\(}\)の内積を考えると, ベクトルの成分より\eqref{5}式を得ることができる. また, 内積の定義より\eqref{6}式を得ることができる.
+                \[
+                \bm{A_1} \cdot \bm{O_1} &= \frac {\cos \alpha \cos \beta} {\sin \theta} \label{5} \\
+                \bm{A_1} \cdot \bm{O_1} &= \frac {\cos \theta}{\sin \theta} \label{6}
+                \]
+                　以上より, \(a\), \(a\)及び\(}\)は角度\(a\)を用いて次のように示せる. ただし始点O\(0\)から終点O\(1\)へ向かうベクトルを\(}\)とする.
+                \[
+                \cos \beta &= \frac {\cos \theta}{\cos \alpha}\\
+                \sin \beta &= \frac {\sqrt{\cos^2 \alpha - \cos^2 \theta}}{\cos \alpha}\\
+                \bm{O_1} = \bm p &= \left( \frac {1}{\cos \alpha \tan \theta},0,\frac{\sqrt{\cos^2 \alpha - \cos^2 \theta}}{\cos \alpha \sin \theta}\right) \label{9}
+                \]
+                　\eqref{p14}図のように, F\(1\)の各点はF\(0\)の各点に\(}\)を加えることで得られるので, A\(1\), B\(1\), C\(1\)の位置ベクトル\(}\)は以下の通り.
+                \[
+                \bm{A_1} &= \bm{a} + \bm{p}\label{10}\\
+                \bm{B_1} &= \bm{b} + \bm{p}\label{11}\\
+                \bm{C_1} &= \bm{a}+\bm{b}+ \bm{p}\label{12}
+                \]
+                　\eqref{p15}図のように, F\(1\)とF\(2\)を底面とする斜四角柱はF\(0\)とF\(1\)を底面とする斜四角柱をz軸で\(i\)回転させたものであるので, O\(2\)の位置ベクトル\(}\)は\(}\)のx, y方向成分に\(1\)を乗じた成分を持つベクトルに\(}\)を加えたベクトルである. ここで\(}\)をz軸で\(i\)回転させたベクトル\(}\)を用いて\(}\)は以下のように示すことができる.
+                \[
+                \overline{\bm{p}} &= \left(- \frac {1}{\cos \alpha \tan \theta}, 0, \frac{\sqrt{\cos^2 \alpha - \cos^2 \theta}}{\cos \alpha \sin \theta}\right)\label{13}\\
+                \bm{O_2} &=\bm{p}+ \overline{\bm{p}}
+                \]
+                　\eqref{10}\eqref{11}\eqref{12}式と同様に, A\(2\), B\(2\), C\(2\)の位置ベクトル\(}\)は以下の通り.
+                \[
+                \bm{A_2} &= \bm{a} + \bm{p}+ \overline{\bm{p}}\\
+                \bm{B_2} &= \bm{b} + \bm{p}+ \overline{\bm{p}}\\
+                \bm{C_2} &= \bm{a}+\bm{b}+ \bm{p}+ \overline{\bm{p}}
+                \]
+                　以降同様にF\(n\)の点O\(n\)を除いた各頂点の位置ベクトル\(}\)について, 点O\(n\)の位置ベクトル\(}\)を用いて以下の式が従う.
+                \[
+                \bm{A_n} &= \bm{a} + \bm{O_n}\\
+                \bm{B_n} &= \bm{b} + \bm{O_n}\\
+                \bm{C_n} &= \bm{a}+\bm{b}+ \bm{O_n}
+                \]
+                　\(}\)は\(}\)と\(}\)を交互に加えていくことで求めることができる. \(n\)が偶数である時, F\(n\)の座標はそれぞれ\(}\)回ずつ足し合わせたものである. 一方\(n\)が奇数である時, \(}\)を足した回数が\(}\)を足した回数よりも一度だけ多くなるので, \(}\)を\(}\)回, \(}\)を\(}\)回足し合わせたものである.
+                \[
+                \bm{O_n} =
+                \begin{cases}
+                \frac{n}{2} (\bm{p}+ \overline{\bm{p}}) & \text{if \(2\)}\\
+                \frac{n}{2} (\bm{p}+ \overline{\bm{p}}) + \frac{1}{2} (\bm{p}- \overline{\bm{p}}) & \text{if \(2\)}
+                \end{cases}
+                \]
+                　ここで, \(n\)が奇数ならば1であり, \(n\)が偶数ならば0であるような係数を考えることで, 任意の整数\(n\)を用いて\(}\)を以下のような式にまとめることができる. また\eqref{9}\eqref{13}式より, その成分を以下のように示すことができる.
+                \[
+                \bm{O_n} &= \frac{n}{2} (\bm{p}+ \overline{\bm{p}}) + \frac{1}{2} (\bm{p}- \overline{\bm{p}})\frac{1+(-1)^{n+1}}{2}\label{22} \\
+                &=\left(\frac{1+(-1)^{n+1}}{2\cos \alpha \tan \theta},0,\frac{n\sqrt{\cos^2 \alpha - \cos^2 \theta}}{\cos \alpha \sin \theta}\right)\label{23}
+                \]
+                　よって, \(}\)は以下のように示される.
+                \[
+                \bm{A_n} &= \left(\cos (+\alpha)+\frac{1+(-1)^{n+1}}{2\cos \alpha \tan \theta} , \sin (+\alpha) ,\frac{n\sqrt{\cos^2 \alpha - \cos^2 \theta}}{\cos \alpha \sin \theta}\right)\\
+                \bm{B_n} &= \left(\cos (-\alpha)+\frac{1+(-1)^{n+1}}{2\cos \alpha \tan \theta} , \sin (-\alpha) ,\frac{n\sqrt{\cos^2 \alpha - \cos^2 \theta}}{\cos \alpha \sin \theta}\right)\\
+                \bm{C_n} &=  \left(2\cos \alpha+\frac{1+(-1)^{n+1}}{2\cos \alpha \tan \theta} , 0, \frac{n\sqrt{\cos^2 \alpha - \cos^2 \theta}}{\cos \alpha \sin \theta}\right)
+                \]
+                　上述の式はジッパードチューブにおいて, 下底から\(n\)番目の底面F\(n\)の頂点の座標を表している. ミウラ折りの角度\(a\)は一定であるため, ジッパードチューブの形状は角度\(a\) (\(a\))に対し一意に定まることが読み取れる.
+                \section{ジッパードチューブの体積・表面積}
+                F\(l\)からF\(m\)までで構成されるジッパードチューブの体積を考える (ただし, \(l\)は任意の整数であり\(l\)である)\footnote{“ジッパードチューブで作る緑台高校”ではF\(0\)からF\(m\)までで構成されるジッパードチューブについて考えているが, 本稿ではより一般化して考える.}. ジッパードチューブは合同な\(l\)個の斜四角柱が連続する立体とみなすことができる. 底面は半径1のひし形であり, 対角線OC, ABの長さはは\(a\), \(a\)であるので, ひし形の面積を\(a\)とする時,以下のように求められる.
+                \[
+                s_\alpha = \sin 2 \alpha
+                \]
+                　一方, ジッパードチューブの高さ\(h\)は以下の通り.
+                \[
+                h = \frac{(m-l)\sqrt{\cos^2 \alpha - \cos^2 \theta}}{\cos \alpha \sin \theta}
+                \]
+                　よってジッパードチューブの体積\(a\)は以下のように表すことができる.
+                \[
+                V_\alpha = 2 (m-l) \sin \alpha  \frac{\sqrt{\cos^2 \alpha - \cos^2 \theta}}{\sin \theta}
+                \]
+                　角度\(a\)が最大値\(a\)をとる時, <a href="#image5" class="internalImage">(5)</a>図のようにジッパードチューブは折り畳まれた状態になり, 当然その体積は0になる. この時の面積\(a\)は, ひし形の間に各辺の長さが\(a\), \(}\)の長方形を加えたような六角形になるので, \(l\)の値に関わらず以下のように示される.
+                \[
+                S_\theta = 2 + \sin 2 \theta
+                \]
+                　一方, ジッパードチューブの表面積\(a\)を考える. \eqref{p13}図より, 斜四角柱一つの側面積は4である. 底面積は\(a\)と表すことができるので, \(a\)は以下のように示すことができる. ただし\(a\).
+                \[
+                S_\alpha=2\{2(m-l)+ \sin 2 \alpha \}
+                \]
+                　\(}\)の時, ジッパードチューブの体積, 表面積を\(}\), \(}\)とすると, 以下のように示すことができる.
+                \[
+                V_\frac{\pi}{4} &= \frac {(m-l)\sqrt{\cos (\pi-2\theta)}}{\sin \theta}\\
+                S_\frac{\pi}{4} &= 2+4(m-l)
+                \]
+                　この時, \(}\)と\(a\)の比で表される表面積の圧縮率は以下に示すとおりである.
+                \[
+                \frac{S_\theta}{S_\frac{\pi}{4}}=\frac{1 + \sin \theta \cos \theta}{1+2(m-l)}\label{saa}
+                \]
+                　\(l\)が最小値1, \(a\) が最大値\(}\)をとる時, 表面積の圧縮率は最大値\(}\)をとる. 即ち, この構造は表面積を少なくとも半分まで減らすことができる. 実際には, ミウラ折りの角度\(a\)は\(}\)に近い値に設定するため, 面積\(a\)は2に近い値になる. この場合, この構造は表面積を最低でも\(}\)程度まで減らすことができるといえる.\\
+                　\(}\)で折り畳んだ時, ジッパードチューブは平面になるので体積は0になる. しかしながら実際は紙が重複してできた束に過ぎず, その分厚さによって体積が生じる. 折り畳んだ際の構造を六角柱と見なし, その体積を\(a\)とする. また, 紙の分厚さを\(g\)とする.\\
+                　F\(0\)からF\(1\)までのジッパードチューブを折り畳む時, その最大の重複数は2になる. ここにF\(2\)を新たに加えた構造物を折り畳むと, 最大重複数は4となり, これ以降も構造物の底面を増やしていく度に重複度は2ずつ増加する. よって, F\(l\)からF\(m\)までのジッパードチューブの最大重複数は\()\). したがって以下の式が成り立つ.
+                \[
+                V^\prime_\theta = 2 g (m-l) (2 + \sin 2 \theta)
+                \]
+                　ここで, \(}\)と\(a\)の比で表される体積の圧縮率は以下に示すとおりである.
+                \[
+                \frac{V^\prime_\theta}{V_\frac{\pi}{4}} = 4g \frac{1+ \sin \theta \cos \theta}{\sqrt{\cos (\pi-2\theta)}}\label{taa}
+                \]
+                　表面積の圧縮率の際と同様, \(a\)は\(}\)に近い値である為, \(g\)の係数は1に近い値になる. 例えばミウラ折りの辺を2.0 cmとし, 紙の分厚さを0.010 mm\cite{紙}とする時, \(0\)となるので, 僅か0.20\%程度まで体積を減らすことができる.\\
+                　一方, 角度\(a\)が最小値\(0\)をとる時, ジッパードチューブは\eqref{p17}図のように折り畳むことができる. この面積を\(0\)とする時, 面積1の平行四辺形が\()\)個あるだけなので\eqref{alpha=0}式のように示せる. また, 面の重複数は\(m\)に関わらず2であるので, 折り畳んだ際の構造の体積\(0\)は\eqref{alpha=01}式の通りである.
+                \[
+                S_0&=2(m-l)\label{alpha=0} \\
+                V^\prime_0\label{alpha=01}&=4g(m-l)
+                \]
+                　\(}\)と\(0\),\(}\)と\(0\)の比で表される圧縮率については次式のようになる.
+                \[
+                \frac{S_0}{S_\frac{\pi}{4}} &=\frac{m-l}{1+2(m-l)} \\
+                \frac{V^\prime_0}{V_\frac{\pi}{4}} &=4g\frac{\sin \theta}{\sqrt{\cos (\pi-2\theta)}}
+                \]
+                　\(l\)が最小値1をとる時, 表面積の圧縮率は最小値\(}\)となる. これは\eqref{saa}式で示される圧縮率と比べてあまり圧縮できていないことがわかる. 体積の圧縮率に関しては, \(a\)であるので, \eqref{taa}式で示される圧縮率と比べてより圧縮できていることがわかる. これは, \(a\)で折り畳んだ時は構造を六角柱と見なしたのに対し, \(0\)では均質に折り畳めた為である.
+                \section{ジッパードチューブの回転・平行移動}
+                上述の通り, ジッパードチューブの形状は角度\(a\)に対し一意に定まる. これは構造の端部を変形させれば, 連動して他の部位も変形するということを示している. この性質を利用し, 複数個のジッパードチューブを繋ぎ合わせることで, 複雑な構造物であっても迅速かつ簡便に展開・折り畳みが可能になる\cite{剛体}.\\
+                　複数個のジッパードチューブを連動性を持つように繋げた構造体（以下オリガミチューブとする）のシミュレーションを行う為, 先ほど座標設定を行ったジッパードチューブをｚ軸で角度\(a\)だけ回転させ, x方向に\(X\), y方向に\(Y\)だけ平行移動させた構造体を新たに再定義する. ここで角度\(a\)をジッパードチューブの角度と呼称する.\\
+                　先ほどと同様に, ある底面をF\(0\)とし, その直上の底面をF\(1\), 以降同様に整数\(n\)に対しF\(0\)から順に\(1\)番目の底面をF\(n\)段目となるように定義する. また\eqref{p18}図のように, F\(0\)の頂点をP\(0\), A\(0\), B\(0\), C\(0\)とし, F\(1\)の頂点をP\(1\), A\(1\), B\(1\), C\(1\)とし, 以降同様にF\(n\)の点をP\(n\), A\(n\), B\(n\), C\(n\)とする. ただしP\(0\)の位置ベクトルを\(}\)で表す時,
+                \[
+                \bm{P_0}=(X,Y,0).\label{P_0}
+                \]
+                　Oを原点とする座標平面において, F\(0\)がxy平面上にあるとし, 先ほどと同様に\(}\)の大きさを\(a\), ミウラ折りの辺の大きさを1, ミウラ折りの角度\(a\)をとする.\\
+                　ここで,始点P\(0\)から終点A\(0\), B\(0\)に向かうベクトルをそれぞれ\(e\)とする時, 以下のように示せる.
+                \[
+                \bm{a}^\prime &= (\cos (\gamma+\alpha) , \sin (\gamma+\alpha) , 0)\label{a^0}\\
+                \bm{b}^\prime &= (\cos (\gamma-\alpha) , \sin (\gamma-\alpha) , 0)\label{b^0}
+                \]
+                　したがって, F\(0\)の各頂点の位置ベクトル\(0\)は以下のようになる.
+                \[
+                \bm{A}_0&=\bm{a}^\prime +\bm P_0\\
+                \bm{B}_0&=\bm{b}^\prime +\bm P_0\\
+                \bm{C}_0&=\bm{a}^\prime +\bm b^\prime+\bm P_0
+                \]
+                　始点P\(0\)から終点P\(1\)に向かうベクトルを\(e\)とする時, 以下のように示せる.
+                \[
+                \bm p ^\prime=\left( \frac {\cos \gamma}{\cos \alpha \tan \theta},\frac {\sin \gamma}{\cos \alpha \tan \theta},\frac{\sqrt{\cos^2 \alpha - \cos^2 \theta}}{\cos \alpha \sin \theta}\right)
+                \]
+                　また, \(e\)をz軸で\(i\)回転させたベクトル\(}\)は以下の通り.
+                \[
+                \overline{\bm p ^\prime}=\left( -\frac {\cos \gamma}{\cos \alpha \tan \theta},-\frac {\sin \gamma}{\cos \alpha \tan \theta},\frac{\sqrt{\cos^2 \alpha - \cos^2 \theta}}{\cos \alpha \sin \theta}\right)
+                \]
+                　始点P\(0\)から終点P\(n\)に向かうベクトルを\(e\)とする時, \eqref{22}\eqref{23}式と同様に以下のように表すことができる.
+                \[
+                \bm p_n ^\prime&=\frac{n}{2} \left(\bm p ^\prime+ \overline{\bm p ^\prime} \right) + \frac{1}{2} \left(\bm p ^\prime- \overline{\bm p ^\prime}\right)\frac{1+(-1)^{n+1}}{2} \\
+                &=\left(\cos \gamma \frac{1+(-1)^{n+1}}{2\cos \alpha \tan \theta},\sin \gamma \frac{1+(-1)^{n+1}}{2\cos \alpha \tan \theta},\frac{n\sqrt{\cos^2 \alpha - \cos^2 \theta}}{\cos \alpha \sin \theta}\right)\label{p_n}
+                \]
+                　この時, F\(n\)の各頂点の位置ベクトル\(}\)は, \(e\)とそれぞれ\(0\)との和で示される.
+                \[
+                \bm{P_n}&=\bm p_n ^\prime+\bm P_0\\
+                \bm{A_n}&=\bm a^\prime +\bm p_n ^\prime+\bm P_0\\
+                \bm{B_n}&=\bm b^\prime +\bm p_n ^\prime+\bm P_0\\
+                \bm{C_n}&=\bm a^\prime +\bm b^\prime+\bm p_n ^\prime+\bm P_0
+                \]
+                　\eqref{P_0}\eqref{a^0}\eqref{b^0}\eqref{p_n}式より, \(}\)は以下のように示される.
+                \[
+                \bm{P_n}&=\left(\cos \gamma \frac{1+(-1)^{n+1}}{2\cos \alpha \tan \theta}+X,\sin \gamma \frac{1+(-1)^{n+1}}{2\cos \alpha \tan \theta}+Y,\frac{n\sqrt{\cos^2 \alpha - \cos^2 \theta}}{\cos \alpha \sin \theta}\right)\\
+                \bm{A_n}&= \left( \cos (\gamma+\alpha)+\cos \gamma \frac{1+(-1)^{n+1}}{2\cos \alpha \tan \theta} +X,\sin (\gamma+\alpha) +\sin \gamma \frac{1+(-1)^{n+1}}{2\cos \alpha \tan \theta}+Y ,\frac{n\sqrt{\cos^2 \alpha - \cos^2 \theta}}{\cos \alpha \sin \theta} \right) \\
+                \bm{B_n}&= \left( \cos (\gamma-\alpha)+\cos \gamma \frac{1+(-1)^{n+1}}{2\cos \alpha \tan \theta} +X,\sin (\gamma-\alpha) +\sin \gamma \frac{1+(-1)^{n+1}}{2\cos \alpha \tan \theta}+Y ,\frac{n\sqrt{\cos^2 \alpha - \cos^2 \theta}}{\cos \alpha \sin \theta} \right) \\
+                \bm{C_n}&= \left( \cos \gamma \left \{2\cos \alpha + \frac{1+(-1)^{n+1}}{2\cos \alpha \tan \theta} \right \}+X , \sin \gamma \left \{2\cos \alpha + \frac{1+(-1)^{n+1}}{2\cos \alpha \tan \theta}\right\} +Y,\frac{n\sqrt{\cos^2 \alpha - \cos^2 \theta}}{\cos \alpha \sin \theta} \right)
+                \]
+                　これで目的の構造物を座標空間上で作ることができた. \(Y\)のそれぞれに任意の値を代入することで自在に回転・平行移動させることができる.
+                \section{接続方法と共有面}
+                連動性を保つようにあるジッパードチューブZ\(1\)に別のジッパードチューブZ\(2\)を接着することを考える. この時, Z\(1\)とZ\(2\)との間には共有面が必要であり, そのような接着の方法には二通りの方法が存在する.\\
+                　一つは\eqref{p19}図のように, Z\(1\)をｘ方向に\()\), ｙ方向に\()\)だけ移動させた構造をZ\(1\)とする方法(これをパターン1と称する)である. ここで, 先ほどのジッパードチューブの各頂点P\(n\), A\(n\), B\(n\), C\(n\)を用いて, \(j\)番目のジッパードチューブZ\(j\)の各頂点をZ\(j\)(P\(n\)), Z\(j\)(A\(n\)), Z\(j\)(B\(n\)), Z\(j\)(C\(n\))とする(ただし, \(j\)は任意の自然数).\\
+                　例えばZ\(2\)がZ\(1\)をｘ方向に\()\), ｙ方向に\()\)だけ移動させた構造だとする時, 以下の式が成り立つ. ここでZ\(j\)(P\(n\)), Z\(j\)(A\(n\)), Z\(j\)(B\(n\)), Z\(j\)(C\(n\))の位置ベクトルは\()\)で表す. また, 式の簡略化の為, z座標については省略する.
+                \[{2}
+                \bm Z_2( \mathrm P_n) &= (\cos (\gamma+ \alpha)+X, \sin(\gamma+\alpha)+Y) &= \bm Z_1( \mathrm A_n)\\
+                \bm Z_2( \mathrm B_n) &= (2\cos\gamma \cos \alpha+X,2\sin\gamma \cos \alpha+Y) &= \bm Z_1( \mathrm C_n)
+                \]
+                　この時, 四角形Z\(1\)(A\(n\)) Z\(1\)(A\(}\)) Z\(1\)(C\(n\)) Z\(1\)(C\(}\))と四角形Z\(2\)(P\(n\)) Z\(2\)(P\(}\)) Z\(2\)(B\(n\)) Z\(2\)(B\(}\))は等しい. ｘ方向に\()\), ｙ方向に\()\)だけ移動させた構造だとしても, 同様に共有面を有する. よってパターン1は確かに共有面を作ることができる.\\
+                　もう一つの方法は\eqref{p20}図のように, Z\(1\)を\()\)を通りxy平面に垂直な直線を軸に\()\)回転させ, x方向に\(a\), y方向に\(a\)移動させた構造をZ\(2\)とする方法(これをパターン2と称する)である. 例えばZ\(1\)がZ\(0\)を\(a\)回転させた構造だとする. この時, \(n\)が偶数ならば以下の式が成り立つ. ただし式の簡略化の為, z座標については省略する.
+                \[
+                \bm Z_2( \mathrm P_n) &=
+                \begin{cases}
+                (2\cos\gamma \cos \alpha+X,2\sin\gamma \cos \alpha+Y) & \text{if \(2\)}\\
+                \left(2\cos\gamma \cos \alpha-\frac{\cos (\gamma-2\alpha)}{\cos \alpha \tan \theta}+X,2\sin\gamma \cos \alpha-\frac{\sin (\gamma-2\alpha)}{\cos \alpha \tan \theta}+Y\right) & \text{if \(2\)}\label{z1pn}
+                \end{cases}\\
+                \bm Z_2( \mathrm A_n) &=
+                \begin{cases}
+                (\cos (\gamma+ \alpha)+X, \sin(\gamma+\alpha)+Y)  & \text{if \(2\)}\\
+                \left( \cos (\gamma+\alpha)- \frac{\cos (\gamma-2\alpha) }{\cos \alpha \tan \theta} +X, \sin (\gamma+\alpha) - \frac{\sin (\gamma-2\alpha)}{\cos \alpha \tan \theta}+Y \right) & \text{if \(2\)}\label{z1an}
+                \end{cases}
+                \]
+                　したがって, \(n\)が偶数ならば, \( \)が成り立つ. 一方, \(n\)が奇数であれば以下の式が成り立つ.
+                \[
+                \bm Z_1( \mathrm C_n) &= \left(2\cos\gamma \cos \alpha+\frac{\cos \gamma}{\cos \alpha \tan \theta}+X,2\sin\gamma \cos \alpha+\frac{\sin \gamma}{\cos \alpha \tan \theta}+Y\right)\\
+                \bm Z_1( \mathrm A_n) &=\left( \cos (\gamma+\alpha)+ \frac{\cos \gamma }{\cos \alpha \tan \theta} +X, \sin (\gamma+\alpha) + \frac{\sin \gamma}{\cos \alpha \tan \theta}+Y \right)
+                \]
+                　この時, 始点\()\)から終点\()\)へ向かうベクトル\(c\)を以下のように示すことができる.
+                \[{3}
+                \bm w_a&= (\cos (\gamma - \alpha), \sin (\gamma-\alpha)) \frac{2}{\tan \theta}\\
+                \bm w_b&= (\cos (\gamma - \alpha), \sin (\gamma-\alpha))\\
+                \bm w_c&= (\cos (\gamma - \alpha), \sin (\gamma-\alpha)) \left(1+\frac{2}{\tan \theta}\right)
+                \]
+                　上式より, \(c\)であるので, 点\()\)は一直線上にある. また四角形Z\(1\)(A\(n\)) Z\(1\)(A\(}\)) Z\(1\)(C\(n\)) Z\(1\)(C\(}\))と四角形Z\(2\)(P\(n\)) Z\(2\)(P\(}\)) Z\(2\)(B\(n\)) Z\(2\)(B\(}\))は同一平面上にあり, \eqref{z1pn}\eqref{z1an}式より一辺を共有しているので必ず共有面を持つ.\\
+                　Z\(1\)を\()\)を通りxy平面に垂直な直線を軸に\()\)回転させ, x方向に\(a\), y方向に\(a\)移動させた構造をZ\(2\)としても同様に共有面を持つ. よって, パターン2は確かに共有面を作ることができる.\\
+                　角度\(a\)を減少させていく時, その共有面はある角度\(1\)を境に四角形から三角形に変化する. \(1\)である時, \(b\)であるので, \(1\)に関して以下の等式を得られる.
+                \[
+                \cos \phi_1 = \frac{1}{\sqrt5}
+                \]
+                　従って, \(}\)である時, パターン2は四角形の共有面を持ち, \(}\)である時は三角形の共有面を持つ.
+                \section{接続方法と面積}
+                パターン1でジッパードチューブを一直線上に接続させていくとき, 構造を一つ追加した際の面積の増加量を\(a\)とする. また, 同様の方法で接続された\(k\)個のジッパードチューブで構成されるオリガミチューブを考えるとき, 折り畳んだ際にできる\eqref{p21}図のような平面の面積を\(}\)とすると, 以下のように示すことができる.
+                \[
+                d_{a} &=1+\sin 2\theta \\
+                S_{a} &= 1 + k ( 1 + \sin 2 \theta)\label{1面積}
+                \]
+                　\(a\)は1より大きいので, 上式は面積\(}\)が1より大きい傾きで一次関数的に増大することを示している. これではチューブを増やすとすぐに面積が増大し, 持ち運びの簡便さが失われてしまう.\\
+                　パターン2で\(k\)個のジッパードチューブを接続し折り畳む時, \eqref{p22}図のように合同な六角形が一部重複した図形が出来る（ただし, ここでは\()\)回転させる場合を採用したが, 重複する面積は変化しない).　ここで\(0\)の各頂点を\(e\)とし, \(1\)の各頂点を\(z\)とする. ただし, 点\(o\)は共通の点であり, 各頂点の位置ベクトルを\(z\)とする時, 以下に示すように定義する.
+                \[
+                \bm E_\mathrm a&=\left(0,0\right)\\
+                \bm E_\mathrm b&=\left(\cos \theta, \sin \theta \right)\\
+                \bm E_\mathrm c&=\left(\cos \theta+\frac{1}{\sin \theta}, \sin \theta \right)\\
+                \bm E_\mathrm d&=\left(2\cos \theta+\frac{1}{\sin \theta}, 0 \right)\\
+                \bm E_\mathrm e&=\left(\cos \theta+\frac{1}{\sin \theta},-\sin \theta \right)\\
+                \bm E_\mathrm o&=\left(\cos \theta,-\sin \theta \right)\\
+                \bm E_\mathrm v&=\left(2\cos \theta,0 \right)\\
+                \bm E_\mathrm w&=\left(2\cos \theta -\cos 3\theta, -\sin3\theta \right)\\
+                \bm E_\mathrm x&=\left(2\cos \theta -\cos 3\theta-\frac{\cos 2\theta}{\sin \theta}, -\sin3\theta-\frac{\sin 2\theta}{\sin \theta} \right)\\
+                \bm E_\mathrm y&=\left(\cos \theta -\cos 3\theta-\frac{\cos 2\theta}{\sin \theta}, -\sin \theta-\sin3\theta-\frac{\sin 2\theta}{\sin \theta} \right)\\
+                \bm E_\mathrm z&=\left(\cos \theta -\frac{\cos 2\theta}{\sin \theta}, -\sin \theta-\frac{\sin 2\theta}{\sin \theta}\right)
+                \]
+                　ここで線分\(x\)と線分\(e\)との交点をそれぞれ\(g\)とする. 角度\(a\)を減少させていく時, 重複する部分の図形はある角度\(2\)を境に\eqref{p23}図のような六角形\(e\)から\eqref{p24}図のような五角形\(e\)に変化する. \(2\)となるのは\eqref{p25}図のように点\(d\)が線分\(x\)上にある時であるので, ある実数\(t\)を用いて以下のように表すことができる.
+                \[
+                \bm E_\mathrm d&=\bm E_\mathrm w+t(\bm E_\mathrm x-\bm E_\mathrm w)\\
+                \left(2\cos \theta+\frac{1}{\sin \theta}, 0 \right)&=(2\cos \phi_2 -\cos 3\phi_2, -\sin3\phi_2)+t\left(-\frac{\cos 2\phi_2}{\sin \phi_2}, -\frac{\sin 2\phi_2}{\sin \phi_2}\right)\label{phi2}
+                \]
+                　上式を整理することで以下の等式\footnote{この式は\(2\)であることを示している. 共有面が三角形になるという事実は\eqref{p25}図において, 三角形E\(e\)E\(o\)E\(v\)がE\(o\)E\(v\)を底辺とした二等辺三角形になるということに対応しており, 点\(d\)が線分\(x\)上にあることと直接関係はないように思われる. 関係性を解明することで\eqref{phi2}式のような煩雑な計算を介さずとも\(2\)を求められるかもしれない.}を得ることができる.
+                \[
+                \cos \phi_2 = \frac{1}{\sqrt5}
+                \]
+                　即ち, \(}\)である時, 重複する部分の図形は六角形\(e\)で表される. ここで点\(f\)は線分\(x\)と線分\(d\)との交点であるので, ある実数の組\(v\)を用いて位置ベクトル\(f\)を以下のように表すことができる.
+                \[
+                \bm E_\mathrm f=\left(
+                \begin{array}{c}
+                2 \cos \theta+\frac{1}{\sin \theta} \\
+                0 \\
+                \end{array}
+                \right)
+                +u\left(
+                \begin{array}{c}
+                - \cos \theta \\
+                \sin \theta \\
+                \end{array}
+                \right)=\left(
+                \begin{array}{c}
+                2\cos \theta - \cos 3\theta \\
+                - \sin 3\theta \\
+                \end{array}
+                \right)
+                +v\left(
+                \begin{array}{c}
+                - \frac{\cos 2 \theta}{\sin \theta} \\
+                - \frac{\sin 2 \theta}{\sin \theta} \\
+                \end{array}
+                \right)
+                \]
+                　上式を整理することで以下の等式を得ることができる.
+                \[
+                u = \frac{2 \cos \theta +\sin 2\theta\cos 3\theta-\cos 2\theta \sin3\theta}{\sin\theta\cos2\theta+\cos\theta\sin2\theta}
+                \]
+                　ただし\(a\)は\(}\)に近い値である為, \(u\)は1に近い値をとる. ここで点\(x\)からx軸に対して下した垂線とx軸との交点を\(i\)とすると, この図形は直角三角形\(f\), 台形\(f\), 平行四辺形\(e\), の四つの図形に分割することができるので, その面積を\(}\)とすると下の式が成り立つ.
+                \[
+                s_{b}&=\frac{\sin3\theta\cos3\theta}{2}+\frac{u^2\sin\theta\cos\theta}{2}+\frac{u\sin\theta-\sin3\theta}{2}(\frac{1}{\sin\theta}+\cos3\theta-u\cos\theta)+1\\
+                &=\frac{u(1+\sin \theta \cos 3\theta+\cos \theta \sin 3\theta)+4\sin^2\theta-1}{2}
+                \]
+                　以上より, ジッパードチューブを一つ追加した際の面積の増加量\(}\)は以下のように表すことができる.　
+                \[
+                d_{b}= (2+\sin2\theta)-s_b
+                \]
+                　この方法で\(k\)個のジッパードチューブを一直線上に接続し, 折り畳んだ際にできる平面の面積を\(a\)とすると, 以下に示す通りになる.
+                \[
+                S_{b}&= 2+2\sin \theta + k d_{b}\\
+                &= (k+1)(2+\sin2\theta)-ks_b\label{面積}
+                \]
+                　 \(a\)は\(}\)に近い値である為, \(u\)は1, \(}\)は2, \(}\)は0に近い値をとり, \(k\)に関わらず\(}\)は2に近い値をとる. 複数のチューブを繋げても小さく収縮させることができるので, 多くのチューブを必要とする複雑な構造物を作るのに有効な方法であるといえる.\\
+                　パターン1のみで接続されたオリガミチューブは\(a\)から減少していく時, x, z軸方向に展開しつつ\(y\)軸方向に収縮していく. これは収縮する方向がz軸からy軸に変化する2次元展開構造物である.\\
+                　パターン2で接続されたオリガミチューブは繋ぎ方次第で\(a\)の変域が変化する為, 一概に構造物を分類することができない. \(0\)が適当な値である時, そのようなオリガミチューブはパターン1の時と同じく, 収縮する方向が変化する2次元展開構造物である. \(0\)が不適な値である時, オリガミチューブはx, y, z軸に展開する3次元展開構造物となる.
+                \section{オリガミチューブへの発展}
+                パターン2で\(k\)個のジッパードチューブを接続させる時, 最初に\()\)回転させる場合と\()\)回転させる場合との2通りを考えることができる. ここで, \()\)回転させて接続させる場合は\(1\)で, \()\)回転させて接続させる場合は\(1\)で, ジッパードチューブの連なりコース表記した数列\(}\)を考える. ただし初項\(1\)は一つ目のジッパードチューブの角度を決める数である為, 任意の実数値をとる.
+                \[
+                r_j=1 \lor r_j=-1 \qquad (j=2, 3, 4, \dots ,k)
+                \]
+                　ここでチューブの自己交差に注意する必要がある. 例えば, コース表記\(}\)に\(1\)が最大で\(c\)個連続した数列が含まれている時, あるジッパードチューブZ\(i\)を基準に, 点Z\()\), Z\()\)が座標を共有することになる(ただし\(c\)であり\(i\)は自然数). \(}\)の大きさは\(a\)であるので, \(}\)の大きさは\(a\)である. 従って点A\(0\)周りの角度について以下の式が成り立つ.
+                \[
+                2\pi&\geq (c+1)(\pi-2\alpha)\\
+                \alpha&\geq\frac{\pi(c-1)}{2(c+1)}
+                \]
+                　これは\(}\)に\(1\)が最大で\(c\)個連続した数列が含まれている場合でも同様である. \eqref{p28}\eqref{p29}\eqref{p30}図のような構造を形成する場合, \(}\)をとる必要があるので, \(1\)が\(4\)個連続した数列が含まれていないようなコース表記を考えなければならない.\\
+                　チューブを繋ぎ合わせていくとき, \()\)と\()\)は重なり合い, 以降同様に\()\)と\()\)は重なり合う. ここで始点\()\)から終点\()\)へ向かうベクトルを\(j\)とし, \()\)を\(j\)の基準点, \(j\)を\(j\)の基準ベクトルと呼称する. この時, F\(0\)を取らないジッパードチューブであっても基準点と基準ベクトルを考える必要がある.\\
+                　\(j\)の角度を\(j\)とし, コース表記\(}\)を用いて以下のように表すことができる.
+                \[
+                \gamma_{j} =(\pi-2\alpha) \sum_{e=1}^j r_e
+                \]
+                　よって, \(}\)の基準ベクトル\(j\)は以下に示す通り.
+                \[
+                \bm q_j &=\left(2 \cos \alpha \cos \gamma_{j},2 \cos \alpha \sin \gamma_{j} ,0 \right)\\
+                &= \left(2 \cos \alpha \cos \left \{ (\pi-2\alpha) \sum_{e=1}^j r_e \right \} ,2 \cos \alpha \sin \left \{ (\pi-2\alpha) \sum_{e=1}^j r_e \right \} ,0 \right)
+                \]
+                　この時, \(}\)の基準点は\(1\)から\(}\)までの基準ベクトルの総和で表すことができるので, コース表記\(}\)を用いて以下のように表すことができる.
+                \[
+                \bm Z_{j}(\mathrm P_0) &= \sum_{e=1}^{j-1}\bm q_e+\bm Z_{1}(\mathrm P_0)\\
+                &=\sum_{e=1}^{j-1}\bm \left(2 \cos \alpha \cos \left \{ (\pi-2\alpha) \sum_{f=1}^e r_f \right \} ,2 \cos \alpha \sin \left \{ (\pi-2\alpha) \sum_{f=1}^e r_f \right \} , 0 \right)+\bm Z_{1}(\mathrm P_0)
+                \]
+                　以上より, オリガミチューブを構成するジッパードチューブの基準点を立式することができた. 階層数を表す変数\(m\)とジッパードチューブの個数を表す変数\(k\), コース表記の数列\(}\), 基準点Z\(1\)(P\(0\))を与えることで, 自在にオリガミチューブを設計し, シミュレーションすることが可能になった.\\
+                　\eqref{p26}\eqref{p27}\eqref{p28}\eqref{p29}\eqref{p30}図で示すのは, この式を利用して作った川西緑台高校を模した可展構造である. この構造は高さを表す変数\(m\)に応じて10個のパートで構成されており, それらの変数については以下の表1の通りである.\\
+                　この構造は, ミウラ折りの角度\(a\)が1.5, ミウラ折りの辺の大きさが\(m\)であるような1951個のジッパードチューブによって構成されている. 使用したパソコンのメモリの都合上, 一つのグラフ上に表すことができなかったが, \eqref{p28}\eqref{p29}\eqref{p30}図はそれぞれ連動性を持つように接続された一つのオリガミチューブを為している. \(a\)を\(}\)に限りなく近づけることで, 折り畳んだときの面積は\(2\)にすることができる. ただし, その時の面の重複数は112280である. 故に, 仮に厚さ0.010mmの紙で作ったとしても1.1mの束になってしまう. 一方, \(5\)としたとき(参考までに\(7\)である), \eqref{面積}式を用いることで折り畳んだときの面積が\(2\)になる. これでは高さ10m, 直径5.2mであるフェアリングの内部に収納することはできない. 重複数が大きくなりすぎず, 尚且つ折り畳んだときの面積を減らすことができるようなミウラ折りの角度\(a\)を見つける必要がある.
+                \begin{table}[h]
+                \caption{緑台高校を表す値}
+                \centering
+                \begin{tabular}{lcccl}
+                \hline
+                パート名&\(k\)&\(l\)&\(m\)&\(}\) (ただし最初の10項のみ表記)\\
+                \hline \hline
+                北館1&260&0&40&\{0, 1, -1, 1, -1, 1, -1, 1, -1, 1,\dots \}
+                \\
+                生徒会室&116&0&10&\{2, 1, -1, 1, -1, 1, -1, 1, -1, 1,\dots \}\\
+                北館2&40&0&40&\{4, -1, 1, -1, 1, -1, 1, -1, 1, -1,\dots \}\\
+                図書室1&161&0&20&\{4, -1, 1, -1, 1, -1, 1, -1, 1, -1,\dots \}\\
+                南館&425&0&40&\{3, -1, 1, -1, 1, -1, 1, -1, 1, -1,\dots \}\\
+                図書室2&82&0&20&\{6, -1, 1, -1, 1, -1, 1, -1, -1, 1,\dots \} \\
+                北館3&107&0&40&\{6, -1, 1, -1, 1, -1, -1, 1, -1, 1,\dots \} \\
+                渡り廊下1&294&10&20&\{3, 1, -1, 1, -1, 1, -1, 1, -1, 1,\dots \} \\
+                体育館&308&0&40&\{4, -1, 1, -1, 1, 1, -1, 1, -1, 1,\dots \} \\
+                渡り廊下2&158&10&20&\{6, -1, 1, -1, 1, -1, 1, -1, 1, -1,\dots \} \\
+                \hline
+                \end{tabular}
+                \end{table}
+                \section{おわりに}
+                本稿ではジッパードチューブという構造について探究し, その性質に対する考察を行った. この構造が実用化すれば, 複雑な構造を瞬時に展開・収縮させることができるようになる. 建築, 運搬, ロボット, 宇宙開発をはじめとした幅広い分野で活躍することだろう.\\
+                　これからの発展について述べておく. まずパターン1における面積増加について述べた\eqref{1面積}式だが, これは一直線上に並べたという条件のもと成り立っているものである. 場合分けを用いてより一般的な値を求めたい. 次に面の最大重複数についてである. 今回は時間の都合上求めることができなかったが, 上述の値\(c\)を用いて求めることが可能ではないかと考察している. 最後にオリガミチューブに最適なミウラ折りの角度\(a\)についてである. 最大重複数を求めることができれば最適な\(a\)についても求めることが可能だろう.
+                \begin{thebibliography}{99}
+                \bibitem{a} 舘知宏. Zipper Origami Tube. 折り紙ラボ. https://origami.c.u-tokyo.ac.jp/ZipperTube. 2015
+                \bibitem{b} 株式会社 井上総合印刷. miura-ori. ミウラ折りとは. https://miuraori.biz/about. 2022
+                \bibitem{ソガメ} 十亀昭人. 宇宙にひらく、三次元展開構造物. 10+1 NO.46. 2012
+                \bibitem{紙} 株式会社 第一印刷. 紙の厚さ. 印刷物の寸法・規格. https://www.daiichiinsatsu.co.jp/200 support/2312 atusa.html. 2021
+                \bibitem{剛体}舘知宏. 剛体折紙メカニズム. 日本ロボット学会誌 34巻3号. 2016
+                \end{thebibliography}
+                \begin{figure}[p]
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{ジッパードチューブ完成形.eps}
+                \caption{ジッパードチューブ}
+                \label{p1}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{ジッパードチューブ制作過程.eps}
+                \caption{チューブ制作過程}
+                \label{p2}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{ミウラ折り.eps}
+                \caption{ミウラ折り}
+                \label{p6}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{チューブ展開時.eps}
+                \caption{チューブ展開時}
+                \label{p3}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{チューブ移行時.eps}
+                \caption{チューブ移行時}
+                \label{p4}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{チューブ収縮時.eps}
+                \caption{チューブ収縮時(\(a\))}
+                \label{p5}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{展開図.eps}
+                \caption{ミウラ折りの展開図}
+                \label{p7}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{ジッパードチューブ底面の定義.eps}
+                \caption{チューブの底面}
+                \label{p8}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{ジッパードチューブ点の定義(1回目).eps}
+                \caption{チューブの各頂点(1)}
+                \label{p9}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{角度alphaの定義.eps}
+                \caption{角度\(a\)}
+                \label{p10}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{角度thetaの定義.eps}
+                \caption{角度\(a\)}
+                \label{p11}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{角度betaの定義.eps}
+                \caption{角度\(a\)}
+                \label{p12}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{ベクトルO_1の大きさ.eps}
+                \caption{チューブの側面}
+                \label{p13}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{F_1とF_0の関係.eps}
+                \caption{F\(0\)とF\(1\)の関係}
+                \label{p14}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{F_2とF_1の関係.eps}
+                \caption{F\(1\)とF\(2\)の関係}
+                \label{p15}
+                \end{minipage}
+                \end{figure}
+                \begin{figure}[p]
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{alpha=0.eps}
+                \caption{収縮時(\(0\))}
+                \label{p17}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{ジッパードチューブ点の定義(2回目).eps}
+                \caption{チューブの各頂点(2)}
+                \label{p18}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{1接着方法1.eps}
+                \caption{構造(パターン1)}
+                \label{p19}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{2接着方法2.eps}
+                \caption{構造(パターン2)}
+                \label{p20}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{1接着方法1収縮時.eps}
+                \caption{構造(パターン1)の収縮}
+                \label{p21}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{2接着方法2収縮時.eps}
+                \caption{構造(パターン2)の収縮}
+                \label{p22}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{3Eの定義.eps}
+                \caption{\(2\)における重複部分}
+                \label{p23}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{4Eの定義2.eps}
+                \caption{\(2\)における重複部分}
+                \label{p24}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{5theta=phi.eps}
+                \caption{\(2\)における重複部分}
+                \label{p25}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{六角柱.eps}
+                \caption{\(}\)のチューブ}
+                \label{六角柱}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \includegraphics[keepaspectratio, width=46mm]{俯瞰図.eps}
+                \caption{校舎(俯瞰図)}
+                \label{p26}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{緑台高校収縮時.eps}
+                \caption{校舎(収縮時)}
+                \label{p27}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{左.eps}
+                \caption{校舎(北館・生徒会室)}
+                \label{p28}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{中.eps}
+                \caption{校舎(体育館・渡り廊下)}
+                \label{p29}
+                \end{minipage}
+                \begin{minipage}[b]{0.33\linewidth}
+                \centering
+                \includegraphics[keepaspectratio, width=46mm]{右.eps}
+                \caption{校舎(南館・図書室)}
+                \label{p30}
+                \end{minipage}
+                \end{figure}
+                \end{document}</p>
+        </div>
+    </div>
+    <div class="frame">
+        <div class="header">
+            <h1>2</h1>
+        </div>
+        <div class="content">
+            <p>あいうえお</p>
+        </div>
+    </div>
+</body>
+</html>
